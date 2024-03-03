@@ -1,30 +1,38 @@
 class Node:
-    def __init__(self, key):
+    def __init__(self, value):
+        self.value = value
         self.left = None
         self.right = None
-        self.value = key
 
-def insert(root, key):
+class BinarySearchTree:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, value):
     ######   Make changes if it is necessary     ######
     ###                                             ###
     ###                                             ###
-    ###                                             ###
-    ###                                             ###
-    ###                                             ###
-    ###                                             ###
-    ###                                             ###
-    ###                                             ###
     ###################################################
-    if root is None:
-        return Node(key)
-    else:
-        if root.value < key:
-            root.right = insert(root.right, key)
-        else:
-            root.left = insert(root.left, key)
-    return root
+        new_node = Node(value)
+        if self.root is None:
+            self.root = new_node
+            return True
+        temp = self.root
+        while True:
+            if new_node.value == temp.value:
+                return False  # Avoids duplicate
+            if new_node.value < temp.value:
+                if temp.left is None:
+                    temp.left = new_node
+                    return True
+                temp = temp.left
+            else:
+                if temp.right is None:
+                    temp.right = new_node
+                    return True
+                temp = temp.right
 
-def tree_height(node):
+    def tree_height(self, node):
     ######         Write your program here       ######
     ###                                             ###
     ###                                             ###
@@ -35,17 +43,18 @@ def tree_height(node):
     ###                                             ###
     ###                                             ###
     ###################################################
-# Input string
 
+# Create a BinarySearchTree instance
+my_tree = BinarySearchTree()
+
+# Input string
 input_str = input()
-# Convert input string to a list of numbers
 numbers = [int(n) for n in input_str.split()]
 
-# Building the BST
-root = None
+# Building the BST from input
 for number in numbers:
-    root = insert(root, number)
+    my_tree.insert(number)
 
 # Calculating the height of the BST
-height = tree_height(root)
+height = my_tree.tree_height(my_tree.root)
 print(height)
