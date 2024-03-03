@@ -38,4 +38,4 @@ for number in numbers:
 
 # Calculating the height of the BST
 height = tree_height(root)
-print(f"The height of the tree is: {height}")
+print(height)
