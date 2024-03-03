@@ -5,6 +5,16 @@ class Node:
         self.value = key
 
 def insert(root, key):
+    ######   Make changes if it is necessary     ######
+    ###                                             ###
+    ###                                             ###
+    ###                                             ###
+    ###                                             ###
+    ###                                             ###
+    ###                                             ###
+    ###                                             ###
+    ###                                             ###
+    ###################################################
     if root is None:
         return Node(key)
     else:
